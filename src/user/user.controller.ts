@@ -25,6 +25,7 @@ export class UserController {
   create(@Body(ValidationPipe) createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
+
   @ApiSecurity('JWT-auth')
   @Get()
   @UseGuards(new RoleGuard(Constants.ROLES.ADMIN_ROLE))
@@ -42,6 +43,7 @@ export class UserController {
   // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
   //   return this.userService.update(+id, updateUserDto);
   // }
+
   @ApiSecurity('JWT-auth')
   @Delete(':id')
   @UseGuards(new RoleGuard(Constants.ROLES.ADMIN_ROLE))
